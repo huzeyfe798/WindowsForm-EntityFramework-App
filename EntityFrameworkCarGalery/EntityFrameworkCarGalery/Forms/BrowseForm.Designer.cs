@@ -34,13 +34,13 @@
             this.searchText = new System.Windows.Forms.TextBox();
             this.clearButton = new System.Windows.Forms.Button();
             this.Filter = new System.Windows.Forms.GroupBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.typesFilter = new System.Windows.Forms.ComboBox();
-            this.brandsFilter = new System.Windows.Forms.ComboBox();
-            this.modelsFilter = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.modelsFilter = new System.Windows.Forms.ComboBox();
+            this.brandsFilter = new System.Windows.Forms.ComboBox();
+            this.typesFilter = new System.Windows.Forms.ComboBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.vehicleGridB)).BeginInit();
             this.Filter.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -111,49 +111,14 @@
             this.Filter.TabStop = false;
             this.Filter.Text = "Filter";
             // 
-            // groupBox1
+            // label3
             // 
-            this.groupBox1.Controls.Add(this.searchButton);
-            this.groupBox1.Controls.Add(this.searchText);
-            this.groupBox1.Location = new System.Drawing.Point(510, 2);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(278, 96);
-            this.groupBox1.TabIndex = 6;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Search";
-            // 
-            // typesFilter
-            // 
-            this.typesFilter.FormattingEnabled = true;
-            this.typesFilter.Location = new System.Drawing.Point(6, 46);
-            this.typesFilter.Name = "typesFilter";
-            this.typesFilter.Size = new System.Drawing.Size(121, 21);
-            this.typesFilter.TabIndex = 5;
-            // 
-            // brandsFilter
-            // 
-            this.brandsFilter.FormattingEnabled = true;
-            this.brandsFilter.Location = new System.Drawing.Point(133, 46);
-            this.brandsFilter.Name = "brandsFilter";
-            this.brandsFilter.Size = new System.Drawing.Size(121, 21);
-            this.brandsFilter.TabIndex = 6;
-            // 
-            // modelsFilter
-            // 
-            this.modelsFilter.FormattingEnabled = true;
-            this.modelsFilter.Location = new System.Drawing.Point(260, 46);
-            this.modelsFilter.Name = "modelsFilter";
-            this.modelsFilter.Size = new System.Drawing.Size(121, 21);
-            this.modelsFilter.TabIndex = 7;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(7, 27);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(36, 13);
-            this.label1.TabIndex = 8;
-            this.label1.Text = "Types";
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(257, 27);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(41, 13);
+            this.label3.TabIndex = 10;
+            this.label3.Text = "Models";
             // 
             // label2
             // 
@@ -164,14 +129,51 @@
             this.label2.TabIndex = 9;
             this.label2.Text = "Brands";
             // 
-            // label3
+            // label1
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(257, 27);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(41, 13);
-            this.label3.TabIndex = 10;
-            this.label3.Text = "Models";
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(7, 27);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(36, 13);
+            this.label1.TabIndex = 8;
+            this.label1.Text = "Types";
+            // 
+            // modelsFilter
+            // 
+            this.modelsFilter.FormattingEnabled = true;
+            this.modelsFilter.Location = new System.Drawing.Point(260, 46);
+            this.modelsFilter.Name = "modelsFilter";
+            this.modelsFilter.Size = new System.Drawing.Size(121, 21);
+            this.modelsFilter.TabIndex = 7;
+            // 
+            // brandsFilter
+            // 
+            this.brandsFilter.FormattingEnabled = true;
+            this.brandsFilter.Location = new System.Drawing.Point(133, 46);
+            this.brandsFilter.Name = "brandsFilter";
+            this.brandsFilter.Size = new System.Drawing.Size(121, 21);
+            this.brandsFilter.TabIndex = 6;
+            this.brandsFilter.SelectionChangeCommitted += new System.EventHandler(this.brandsFilter_SelectionChangeCommitted);
+            // 
+            // typesFilter
+            // 
+            this.typesFilter.FormattingEnabled = true;
+            this.typesFilter.Location = new System.Drawing.Point(6, 46);
+            this.typesFilter.Name = "typesFilter";
+            this.typesFilter.Size = new System.Drawing.Size(121, 21);
+            this.typesFilter.TabIndex = 5;
+            this.typesFilter.SelectionChangeCommitted += new System.EventHandler(this.typesFilter_SelectionChangeCommitted);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.searchButton);
+            this.groupBox1.Controls.Add(this.searchText);
+            this.groupBox1.Location = new System.Drawing.Point(510, 2);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(278, 96);
+            this.groupBox1.TabIndex = 6;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Search";
             // 
             // BrowseForm
             // 

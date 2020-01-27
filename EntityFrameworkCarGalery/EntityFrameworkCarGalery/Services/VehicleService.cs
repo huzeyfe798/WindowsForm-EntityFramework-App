@@ -47,20 +47,75 @@ namespace EntityFrameworkCarGalery.Services
         public List<Vehicle> GetFilterId(int typeIndex, int modelIndex, int brandIndex)
         {
             List<Vehicle> list1 = null;
-            if (typeIndex == 0 || modelIndex == 0 || brandIndex == 0)
+            if (typeIndex == 0 )
             {
-                MessageBox.Show("Verilerin Hepsini Giriniz");
+                MessageBox.Show("Filtreleme için seçim yapılmadı.");
 
                 return null;
+            }
+            else if (brandIndex == 0)
+            {
+                using (GaleryContext db = new GaleryContext())
+                {
+                    return db.Vehicles.Where(v=>v.TypeId == typeIndex).Where(v=>v.TypeId == typeIndex).ToList();
+                }
+            }
+            else if (modelIndex == 0)
+            {
+                using (GaleryContext db = new GaleryContext())
+                {
+                    return db.Vehicles.Where(v=>v.TypeId == typeIndex).Where(v=>v.BrandId == brandIndex).ToList();
+                }
             }
             else
             {
                 using (GaleryContext db = new GaleryContext())
                 {
-                    return db.Vehicles.Where(v=> v.TypeId == typeIndex).Where(k=>k.ModelId == modelIndex).Where(x=>x.BrandId == brandIndex).ToList();
+                    return db.Vehicles.Where(v => v.TypeId == typeIndex).Where(k => k.ModelId == modelIndex).Where(x => x.BrandId == brandIndex).ToList();
                 }
-                
+
             }
+        }
+        public List<Brand> GetBrandFromType(int index )
+        {
+
+            List<Vehicle> list1 = null;
+
+            List<Brand> brand1 = new List<Brand>();
+            
+            using (GaleryContext db = new GaleryContext())
+            {
+                list1 = db.Vehicles.Where(v => v.TypeId == index).ToList();
+
+                foreach (var br in list1)
+                {
+                    brand1.Add(br.Brand);
+                }
+
+                return brand1;
+            }
+
+        }
+
+        public List<Model> GetModelFromType(int index , int index1)
+        {
+
+            List<Vehicle> list1 = null;
+
+            List<Model> brand1 = new List<Model>();
+            
+            using (GaleryContext db = new GaleryContext())
+            {
+                list1 = db.Vehicles.Where(v => v.BrandId == index).Where(v=>v.TypeId == index1).ToList();
+
+                foreach (var br in list1)
+                {
+                    brand1.Add(br.Model);
+                }
+
+                return brand1;
+            }
+
         }
 
         public void AddList(Vehicle vehicle)

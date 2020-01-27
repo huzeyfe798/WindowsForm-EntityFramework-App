@@ -50,23 +50,16 @@ namespace EntityFrameworkCarGalery.Forms
             List<Model> models = new List<Model>();
             List<Brand> brands = new List<Brand>();
             list1 = typeService.GetList();
-            models = modelService.GetList();
-            brands = brandService.GetList();
+
             list1.Insert(0,new Type()
             {
                 Name = "---Seçiniz---"
             });
-            models.Insert(0,new Model()
-            {
-                Name = "---Seçiniz---"
-            });
-            brands.Insert(0, new Brand()
-            {
-                Name = "---Seçiniz---"
-            });
+
             typesFilter.DataSource = null;
             modelsFilter.DataSource = null;
             brandsFilter.DataSource = null;
+
 
             modelsFilter.ValueMember = "Id";
             modelsFilter.DisplayMember = "Name";
@@ -77,8 +70,7 @@ namespace EntityFrameworkCarGalery.Forms
             typesFilter.ValueMember = "Id";
             typesFilter.DisplayMember = "Name";
             typesFilter.DataSource = list1;
-            modelsFilter.DataSource = models;
-            brandsFilter.DataSource = brands;
+            
 
 
         }
@@ -97,16 +89,18 @@ namespace EntityFrameworkCarGalery.Forms
 
         private void filterButton_Click(object sender, EventArgs e)
         {
+            int index2 = Convert.ToInt32(modelsFilter.SelectedValue);
+            int index1 = Convert.ToInt32(typesFilter.SelectedValue);
+            int index = Convert.ToInt32(brandsFilter.SelectedValue);
+
+
             List<Vehicle> list1 = null;
-            list1 = vehicleService.GetFilterId(typesFilter.SelectedIndex, modelsFilter.SelectedIndex,
-                brandsFilter.SelectedIndex);
+            list1 = vehicleService.GetFilterId(index1,index2,index);
             if (list1 != null)
             {
                 FillGrid(list1);
-                //FillCombobox();
                 SetVisibilty();
             }
-            
         }
 
         private void searchButton_Click(object sender, EventArgs e)
@@ -134,6 +128,43 @@ namespace EntityFrameworkCarGalery.Forms
             FillGrid(vehicleService.GetList());
             FillCombobox();
             SetVisibilty();
+        }
+
+        private void typesFilter_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            int index = Convert.ToInt32(typesFilter.SelectedValue);
+            List<Brand> list1 = null;
+
+            //MessageBox.Show(index.ToString());
+            list1 = vehicleService.GetBrandFromType(index).Distinct().ToList();
+
+            list1.Insert(0,new Brand()
+            {
+                Name = "--Seçiniz--"
+            });
+            if (list1 != null)
+            {
+                brandsFilter.DataSource = list1;
+            }
+        }
+
+        private void brandsFilter_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            int index1 = Convert.ToInt32(typesFilter.SelectedValue);
+            int index = Convert.ToInt32(brandsFilter.SelectedValue);
+            List<Model> list1 = null;
+
+            //MessageBox.Show(index.ToString());
+            list1 = vehicleService.GetModelFromType(index,index1).Distinct().ToList();
+
+            list1.Insert(0,new Model()
+            {
+                Name = "--Seçiniz--"
+            });
+            if (list1 != null)
+            {
+                modelsFilter.DataSource = list1;
+            }
         }
     }
 }
